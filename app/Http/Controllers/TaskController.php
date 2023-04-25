@@ -35,13 +35,19 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $item = new Item;
-        $item->name = $request->input('name');
-        $item->price = $request->input('price');
-        $item->save();
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required|numeric',
+        ]);
 
-        return redirect()->route('items.index');
+        $task = new Task();
+        $task->name = $validatedData['name'];
+        $task->price = $validatedData['price'];
+        $task->save();
+
+        return redirect('/tasks');
     }
+
 
     /**
      * Display the specified resource.

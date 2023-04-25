@@ -30,7 +30,7 @@
                     <label for="price" class="col-sm-3 control-label">Price</label>
 
                         <div class="col-sm-6">
-                            <input type="text" name="price" class="form-control" id="price">
+                            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
                         </div>
                     </div>
 
