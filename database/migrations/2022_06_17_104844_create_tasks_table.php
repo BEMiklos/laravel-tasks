@@ -13,11 +13,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
-            $table->rename('items');
             $table->decimal('price', 10, 2)->default(0.00);
         });
     }
