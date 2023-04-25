@@ -5,7 +5,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Task
+                    New Item
                 </div>
 
                 <div class="panel-body">
@@ -13,23 +13,32 @@
                     @include('common.errors')
 
                     <!-- New Task Form -->
-                    <form action="/task" method="POST" class="form-horizontal">
+                    <form action="{{ route('items.store') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
-                        <!-- Task Name -->
-                        <div class="form-group">
-                            <label for="task-name" class="col-sm-3 control-label">Task</label>
+                    <!-- Task Name -->
+                    <div class="form-group">
+                        <label for="task-name" class="col-sm-3 control-label">Item</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" name="name" id="task-name" class="form-control" value="{{ old('task') }}">
-                            </div>
+                        <div class="col-sm-6">
+                            <input type="text" name="name" id="task-name" class="form-control" value="{{ old('task') }}">
                         </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="form-group">
+                    <label for="price" class="col-sm-3 control-label">Price</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" name="price" class="form-control" id="price">
+                        </div>
+                    </div>
 
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Task
+                                    <i class="fa fa-btn fa-plus"></i>Add Item
                                 </button>
                             </div>
                         </div>
@@ -41,20 +50,20 @@
             @if (count($tasks) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Tasks
+                        Current Items
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th>Task</th>
+                                <th>Item</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
                                 @foreach ($tasks as $task)
                                     <tr>
                                         <td class="table-text"><div>{{ $task->name }}</div></td>
-
+                                        <td class="table-text"><div>{{ $task->price }}</div></td>
                                         <!-- Task Delete Button -->
                                         <td>
                                             <form action="{{'/task/' . $task->id }}" method="POST">

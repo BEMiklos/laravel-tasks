@@ -24,7 +24,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -35,7 +35,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item;
+        $item->name = $request->input('name');
+        $item->price = $request->input('price');
+        $item->save();
+
+        return redirect()->route('items.index');
     }
 
     /**

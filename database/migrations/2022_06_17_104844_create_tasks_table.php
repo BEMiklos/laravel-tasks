@@ -17,6 +17,8 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('name');
             $table->timestamps();
+            $table->rename('items');
+            $table->decimal('price', 10, 2)->default(0.00);
         });
     }
 
