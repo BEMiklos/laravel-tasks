@@ -33,6 +33,7 @@ Route::post('/task', function (Request $request) {
     error_log("INFO: post /task");
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
+        'price' => 'required|numeric',
     ]);
 
     if ($validator->fails()) {

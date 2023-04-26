@@ -45,7 +45,7 @@ class TaskController extends Controller
         $task->price = $validatedData['price'];
         $task->save();
 
-        return redirect('/tasks');
+        return redirect('/task');
     }
 
 
