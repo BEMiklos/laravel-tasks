@@ -30,25 +30,17 @@ Route::get('/', function () {
     * Add New Task
     */
 Route::post('/task', function (Request $request) {
-    error_log("INFO: post /task");
-    $validator = Validator::make($request->all(), [
+    $validatedData = $request->validate([
         'name' => 'required|max:255',
         'price' => 'required|numeric',
     ]);
 
-    if ($validator->fails()) {
-        error_log("ERROR: Add task failed.");
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $task = new Task;
-    $task->name = $request->name;
+    $task = new Task();
+    $task->name = $validatedData['name'];
     $task->price = $validatedData['price'];
     $task->save();
 
-    return redirect('/');
+    return redirect('/task');
 });
 
 /**
