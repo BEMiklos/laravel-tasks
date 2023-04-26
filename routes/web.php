@@ -45,6 +45,7 @@ Route::post('/task', function (Request $request) {
 
     $task = new Task;
     $task->name = $request->name;
+    $task->price = $validatedData['price'];
     $task->save();
 
     return redirect('/');
