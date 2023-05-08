@@ -83,20 +83,20 @@
                 </div>
             @endif
             <!-- Current Users -->
-            @if (count($users) > 0)
+            @if (count($purchases) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Users
+                        Current Purchases
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th>Users</th>
+                                <th>Purchases</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($userss as $user)
+                                @foreach ($purchases as $user)
                                     <tr>
                                         <td class="table-text"><div>{{ $user->id }}</div></td>
                                         <td class="table-text"><div>{{ $user->sum }}</div></td>
