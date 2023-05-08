@@ -22,7 +22,8 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     error_log("INFO: get /");
     return view('tasks', [
-        'tasks' => Task::orderBy('created_at', 'asc')->get()
+        'tasks' => Task::orderBy('created_at', 'asc')->get(),
+        'purchases' => Purchase::orderBy('created_at', 'asc')->get()
     ]);
 });
 
